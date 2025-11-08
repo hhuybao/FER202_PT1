@@ -4,11 +4,13 @@ import Home from "../pages/Home"
 import { useAuth } from "../contexts/AuthContext";
 import NotFound from "../pages/NotFound";
 import { PaymentProvider } from "../contexts/PaymentContext";
+import UserList from "../pages/UserList";
 
 export const routes = {
     HOME: "/home",
     LOGIN: "/login",
-    NOT_FOUND: "/404"
+    NOT_FOUND: "/404",
+    USER_MANAGEMENT: "/user-management"
 }
 
 const PrivateRoute = ({ children }) => {
@@ -45,6 +47,14 @@ const AppRoutes = () => {
                             <PaymentProvider>
                                 <Home />
                             </PaymentProvider>
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path={routes.USER_MANAGEMENT}
+                    element={
+                        <PrivateRoute>
+                            <UserList />
                         </PrivateRoute>
                     }
                 />

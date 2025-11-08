@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     getListPayment();
-  }, []);
+  }, [getListPayment]);
 
   useEffect(() => {
     if (!paymentDataRef.current && data) {
@@ -22,7 +22,7 @@ const Home = () => {
         courses: courses,
       };
     }
-  }, [data, paymentDataRef.current]);
+  }, [data]);
 
   return (
     <>

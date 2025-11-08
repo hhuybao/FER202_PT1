@@ -53,3 +53,21 @@ export const getPayments = async ({ sortby, search, semester, course }) => {
     throw new Error(e)
   }
 }
+
+export const getUserById = async (id) => {
+  try {
+    const response = await api.get(`/users/${id}`)
+    return response.data
+  } catch (e) {
+    throw new Error(e)
+  }
+}
+
+export const updateUser = async (id, data) => {
+  try {
+    const response = await api.patch(`/users/${id}`, data)
+    return response.data
+  } catch (e) {
+    throw new Error(e)
+  }
+}
