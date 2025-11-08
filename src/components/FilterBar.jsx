@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Card, Form, Row, Col } from "react-bootstrap";
-import { getPayments } from "../services/api";
 import { usePayment } from "../contexts/PaymentContext";
 
 const initFormState = {
@@ -30,9 +29,8 @@ const FilterBar = ({ semesters, courses }) => {
   }, [form.txt_search]);
 
   useEffect(() => {
-    let { sortby, txt_search: debouncedSearch, semester, course } = form;
-    getListPayment(sortby, debouncedSearch, semester, course);
-  }, [debouncedSearch, form.semester, form.course, form.sortby]);
+    getListPayment(form.sortby, debouncedSearch, form.semester, form.course);
+  }, [debouncedSearch, form.semester, form.course, form.sortby, getListPayment]);
 
   return (
     <Card className="mb-4 shadow-sm">

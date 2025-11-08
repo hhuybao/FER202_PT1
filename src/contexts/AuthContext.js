@@ -56,6 +56,12 @@ export const AuthProvider = ({ children }) => {
             const accounts = await getUsers();
             const user = accounts.find((acc) => (acc.email === identifier || acc.username === identifier) && acc.password === password)
             if (user) {
+                // Validate role and status
+                if (user.role !== "admin" || user.status !== "active") {
+                    const errorMsg = "Tài khoản bị khóa, bạn không có quyền truy cập";
+                    dispatch({ type: actions.LOGIN_FAIL, payload: errorMsg })
+                    return { success: false, message: errorMsg }
+                }
                 dispatch({ type: actions.LOGIN_SUCCESS, payload: user })
                 return { success: true, user }
             }
