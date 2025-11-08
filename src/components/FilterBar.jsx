@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Card, Form, Row, Col } from "react-bootstrap";
 import { usePayment } from "../contexts/PaymentContext";
 
@@ -29,8 +29,7 @@ const FilterBar = ({ semesters, courses }) => {
   }, [form.txt_search]);
 
   useEffect(() => {
-    let { sortby, semester, course } = form;
-    getListPayment(sortby, debouncedSearch, semester, course);
+    getListPayment(form.sortby, debouncedSearch, form.semester, form.course);
   }, [debouncedSearch, form.semester, form.course, form.sortby, getListPayment]);
 
   return (

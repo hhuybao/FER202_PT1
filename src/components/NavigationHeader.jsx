@@ -16,7 +16,8 @@ const NavigationHeader = () => {
 
   useEffect(() => {
     setAuth();
-  }, [setAuth]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Navbar bg="primary" variant="dark" expand="lg" className="mb-4">
